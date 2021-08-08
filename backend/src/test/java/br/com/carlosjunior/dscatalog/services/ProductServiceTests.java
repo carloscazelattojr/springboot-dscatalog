@@ -135,13 +135,13 @@ public class ProductServiceTests {
 		});		
 		
 	}
-	
+ 
 	@Test
 	public void updateShouldReturnProductDTOWhenIdExists() {
 		
 		ProductDTO result = service.update(existingId, productDTO);
 		Assertions.assertNotNull(result);
-	}	
+	}	 
 	
 	@Test
 	public void updateShouldThrowResourceNotFoundExceptionWhenDoesNotIdExists() {
