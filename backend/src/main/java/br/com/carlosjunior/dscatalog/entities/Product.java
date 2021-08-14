@@ -25,7 +25,7 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	
+
 	@Column(columnDefinition = "TEXT")
 	private String description;
 	private Double price;
@@ -33,19 +33,20 @@ public class Product implements Serializable {
 
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant date; // Instant = momento no tempo para identificar a data.
-	
-	/*
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant createdAt;
 
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant updatedAt;*/
+	/*
+	 * @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE") private Instant
+	 * createdAt;
+	 * 
+	 * @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE") private Instant
+	 * updatedAt;
+	 */
 
 	// Colecao de categorias.
 	@ManyToMany
-	@JoinTable( name = "tb_product_category", 
-		joinColumns = @JoinColumn(name = "product_id"), 
-		inverseJoinColumns = @JoinColumn(name = "category_id") )
+	@JoinTable(	name = "tb_product_category", 
+				joinColumns = @JoinColumn(name = "product_id"), 
+				inverseJoinColumns = @JoinColumn(name = "category_id"))
 	Set<Category> categories = new HashSet<>();
 
 	public Product() {
@@ -114,23 +115,14 @@ public class Product implements Serializable {
 		return categories;
 	}
 	/*
-	public Instant getCreatedAt() {
-		return createdAt;
-	}
-
-	public Instant getUpdatedAt() {
-		return updatedAt;
-	}
-	
-	@PrePersist
-	public void prePersist() {
-		createdAt = Instant.now();
-	}
-
-	@PreUpdate
-	public void preUpdate() {
-		updatedAt = Instant.now();
-	}*/
+	 * public Instant getCreatedAt() { return createdAt; }
+	 * 
+	 * public Instant getUpdatedAt() { return updatedAt; }
+	 * 
+	 * @PrePersist public void prePersist() { createdAt = Instant.now(); }
+	 * 
+	 * @PreUpdate public void preUpdate() { updatedAt = Instant.now(); }
+	 */
 
 	@Override
 	public int hashCode() {
